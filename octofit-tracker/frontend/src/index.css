@@ -54,6 +54,11 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  background: #f5f6ef;
+}
+
 #root {
   width: 1126px;
   max-width: 100%;
