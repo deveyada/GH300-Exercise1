@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { apiBaseUrl, fetchCollection } from '../api.js'
+
+const usersEndpoint = `${apiBaseUrl}/api/users/` // https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users/
 
 function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('users').then(setUsers).catch((requestError) => setError(requestError.message))
+    fetchCollection('users', usersEndpoint).then(setUsers).catch((requestError) => setError(requestError.message))
   }, [])
 
   return (

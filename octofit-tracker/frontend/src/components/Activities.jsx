@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { apiBaseUrl, fetchCollection } from '../api.js'
+
+const activitiesEndpoint = `${apiBaseUrl}/api/activities/` // https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/
 
 function Activities() {
   const [activities, setActivities] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('activities').then(setActivities).catch((requestError) => setError(requestError.message))
+    fetchCollection('activities', activitiesEndpoint).then(setActivities).catch((requestError) => setError(requestError.message))
   }, [])
 
   return (
